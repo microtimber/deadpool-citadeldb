@@ -1,0 +1,37 @@
+[package]
+name = "deadpool-citadeldb"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+authors = ["Jingxuan Yu<dgingx@163.com>"]
+description = "Dead simple pool for CitadelDB"
+keywords = ["database", "connection", "pool", "deadpool", "citadel", "citadeldb"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/microtimber/deadpool-citadeldb"
+readme = "README.md"
+documentation = "https://docs.rs/deadpool-citadeldb"
+
+[package.metadata.docs.rs]
+all-features = false
+features = ["serde"]
+rustdoc-args = ["--cfg", "docsrs"]
+
+[features]
+default = ["rt_tokio_1"]
+rt_tokio_1 = ["deadpool/rt_tokio_1"]
+rt_async-std_1 = ["deadpool/rt_async-std_1"]
+serde = ["deadpool/serde", "dep:serde"]
+tracing = ["deadpool-sync/tracing"]
+
+[dependencies]
+deadpool = { version = "0.13.0" }
+deadpool-sync = { version = "0.2" }
+citadeldb = "0.16"
+citadeldb-sql = "0.16"
+serde = { package = "serde", version = "1.0", features = [
+    "derive",
+], optional = true }
+thiserror = "2"
+
+[dev-dependencies]
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
