@@ -1,6 +1,6 @@
 [package]
 name = "deadpool-citadeldb"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 rust-version = "1.85"
 authors = ["Jingxuan Yu<dgingx@163.com>"]
@@ -24,14 +24,14 @@ serde = ["deadpool/serde", "dep:serde"]
 tracing = ["deadpool-sync/tracing"]
 
 [dependencies]
-deadpool = { version = "0.13.0" }
+deadpool = { version = "0.13" }
 deadpool-sync = { version = "0.2" }
-citadeldb = "0.16"
-citadeldb-sql = "0.16"
+citadeldb = "1.13"
+citadeldb-sql = "1.13"
 serde = { package = "serde", version = "1.0", features = [
     "derive",
 ], optional = true }
 thiserror = "2"
 
 [dev-dependencies]
-tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+tokio = { version = "1.52", features = ["macros", "rt-multi-thread"] }
